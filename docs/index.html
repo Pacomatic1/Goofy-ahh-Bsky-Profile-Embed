@@ -124,7 +124,6 @@
             </a>
 
         </div>
-
         <script>
             var profileToGet = findValueOfKeyFromQueryStringInUrl("profile");
             if (profileToGet == null) {
@@ -139,6 +138,7 @@
             getEmbedData(profileToGet);
 
             function addDataToEmbed(embedData) {
+                const everythingContainer = document.getElementById("bskyProfileEmbed");
                 const displayNameText = document.getElementById("displayNameText");
                 const pfpDisplay = document.getElementById("bskyProfileEmbedPFP");
                 const handleDisplay = document.getElementById("handleDisplay");
@@ -160,6 +160,9 @@
                     var elementToModify = allElementsToSetLinkOn[i];
                     elementToModify.href = profileLink;
                 }
+                everythingContainer.addEventListener('click', function (event) {
+                    open(profileLink);
+                });
 
             }
 
