@@ -126,9 +126,12 @@
         </div>
 
         <script>
-
-
             var profileToGet = findValueOfKeyFromQueryStringInUrl("profile");
+            if (profileToGet == null) {
+                console.log("HEY! You didn't specify a user to seek!");
+            }
+
+
 
             var embedData;
             // Now here's the thing. I can use promises, or I can have the getEmbedData function call a big fat "do everything else" function.
