@@ -21,7 +21,11 @@
                 display: grid;
                 grid-template-columns: minmax(min-content, max-content) auto minmax(min-content, max-content);
                 grid-template-areas: "profilePic embedText bskyIcon";
+                transition: 100ms ease-out 50ms;
+            } #bskyProfileEmbed:hover {
+                background: #1E2936;
             }
+
             #bskyProfileEmbedPFP {
                 grid-area: profilePic;
                 width: 40px;
@@ -42,10 +46,11 @@
                 font-family: ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji", Segoe UI Symbol,"Noto Color Emoji";
                 font-size: 17px;
             }
-            #bskyProfileEmbedText > b {
+            #bskyProfileEmbedText > a > b {
                 font-weight: 700;
             }
-            #bskyProfileEmbedText > span {
+            
+            #bskyProfileEmbedText > a > span {
                 color: #AEBBC9;
                 font-size: 15px;
             }
@@ -54,11 +59,11 @@
                 width: 35.79px;
                 margin-bottom: auto;
                 overflow: visible;
-                transition: 100ms ease-out 50ms;;
+                transition: 100ms ease-out 50ms;
             } #bskyProfileEmbedIcon:hover {
                 transform:scale(1.1);
-
             }
+
             @font-face {
                 font-family: "Segoe UI";
                 src: url("./assets/segoe-ui/segoeuithis.ttf") format("truetype");
@@ -68,38 +73,127 @@
                 src: url("./assets/segoe-ui/segoeuithisbd.ttf") format("truetype");
             }
 
+            a, a:hover, a:visited, a:focus, a:active  {
+                text-decoration: none;
+                color: inherit;
+                outline: 0;
+                cursor: auto;
+            }
+
+            a.displayNameLink:hover{
+                text-underline-offset: 2px;
+                border-bottom-style: solid;
+                border-bottom-width: 0px;
+                text-decoration-line: underline;
+                text-decoration-color: inherit;
+            }
+
+            a.handleLink:hover{
+                border-bottom-style: solid;
+                border-bottom-width: 0px;
+                text-decoration-line: underline;
+                text-decoration-color:#AEBBC9;
+            }
+
         </style>
     </head>
 
     <body class="has-scrollbar">
-    
-                    <!-- For 2 hours, I tried to make a functioning profile embedder. Considering my use case, I decided that it wasn't worth the time when all of this could easy be done with a *static div.* -->
-                    <!-- Oh, and take this. https://embed.bsky.app/embed/did:plc:ivahk4tfpjcge5bkhaxh4zvb/app.bsky.feed.post/3llkpqlc7d22x?id=9811442599174174&colorMode=system -->
-                    <div id="bskyProfileEmbed">
-                        <img id="bskyProfileEmbedPFP" src="./assets/images/paco-pfp-square.png">
-                        <div id="bskyProfileEmbedText">
-                            <b>Pacomatic</b>  <br>
-                            <span>@pacomatic.bksy.app</span>
-                        </div>
-                        <img id="bskyProfileEmbedIcon" src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%20320%20286'%3e%3cpath%20fill='rgb(10,122,255)'%20d='M69.364%2019.146c36.687%2027.806%2076.147%2084.186%2090.636%20114.439%2014.489-30.253%2053.948-86.633%2090.636-114.439C277.107-.917%20320-16.44%20320%2032.957c0%209.865-5.603%2082.875-8.889%2094.729-11.423%2041.208-53.045%2051.719-90.071%2045.357%2064.719%2011.12%2081.182%2047.953%2045.627%2084.785-80%2082.874-106.667-44.333-106.667-44.333s-26.667%20127.207-106.667%2044.333c-35.555-36.832-19.092-73.665%2045.627-84.785-37.026%206.362-78.648-4.149-90.071-45.357C5.603%20115.832%200%2042.822%200%2032.957%200-16.44%2042.893-.917%2069.364%2019.147Z'/%3e%3c/svg%3e">
+        <!-- For 2 hours, I tried to make a functioning profile embedder. Considering my use case, I decided that it wasn't worth the time when all of this could easy be done with a *static div.* -->
+        <!-- That comment was made at an older time. Here we are now, making exactly that. Funny, innit? -->
+        <div id="bskyProfileEmbed">
+            
+            <a href="" class="linkToProfile">
+                <img id="bskyProfileEmbedPFP">
+            </a>
 
-                    </div>
+            <div id="bskyProfileEmbedText" href="https://pacomatic1.github.io">
+                
+                <a href="" class="linkToProfile displayNameLink">
+                    <b id="displayNameText">Loading...</b>  <br>
+                </a>
+
+                <a href="" class="linkToProfile handleLink">
+                    <span id="handleDisplay">Loading...</span>
+                </a>
+
+            </div>
+
+            <a href="" class="linkToProfile">
+                <img id="bskyProfileEmbedIcon" src="data:image/svg+xml,%3csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20viewBox='0%200%20320%20286'%3e%3cpath%20fill='rgb(10,122,255)'%20d='M69.364%2019.146c36.687%2027.806%2076.147%2084.186%2090.636%20114.439%2014.489-30.253%2053.948-86.633%2090.636-114.439C277.107-.917%20320-16.44%20320%2032.957c0%209.865-5.603%2082.875-8.889%2094.729-11.423%2041.208-53.045%2051.719-90.071%2045.357%2064.719%2011.12%2081.182%2047.953%2045.627%2084.785-80%2082.874-106.667-44.333-106.667-44.333s-26.667%20127.207-106.667%2044.333c-35.555-36.832-19.092-73.665%2045.627-84.785-37.026%206.362-78.648-4.149-90.071-45.357C5.603%20115.832%200%2042.822%200%2032.957%200-16.44%2042.893-.917%2069.364%2019.147Z'/%3e%3c/svg%3e">   
+            </a>
+
+        </div>
+
         <script>
 
-            
 
-            var embedData; // This is some stuff from when I was trying to have a fully functional profile embed from Bluesky. Maybe I can salvage this?
-            getEmbedData("pacomatic.bsky.social")
+            var profileToGet = findValueOfKeyFromQueryStringInUrl("profile");
+
+            var embedData;
+            // Now here's the thing. I can use promises, or I can have the getEmbedData function call a big fat "do everything else" function.
+            // Although this may not be best practice, this is a hell of a lot simpler since all we have to do is wait for the data to come in and then do the thing.
+            getEmbedData(profileToGet);
+
+            function addDataToEmbed(embedData) {
+                const displayNameText = document.getElementById("displayNameText");
+                const pfpDisplay = document.getElementById("bskyProfileEmbedPFP");
+                const handleDisplay = document.getElementById("handleDisplay");
+
+                embedData = JSON.parse(embedData);
+                // console.log(embedData); // Use this as reference for what the properties are.
+                
+                var profileDisplayName = embedData.displayName;
+                var profileHandle = embedData.handle;
+                var profileImageLink = embedData.avatar;
+                var profileLink;
+
+                displayNameText.innerHTML = profileDisplayName;
+                pfpDisplay.src = profileImageLink;  
+                handleDisplay.innerHTML = '@' + profileHandle;
+            
+                // TODO: Set href all elements of class "linkToProfile" to a link to the profile (crazy i know)
+            
+            }
+
+
+
             function getEmbedData(profileHandleWithoutLeadingAtSymbol) {
                 var xhr = new XMLHttpRequest();
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === 4) {
                         embedData = xhr.response;
+                        addDataToEmbed(embedData);
                     }
                 }
                 xhr.open('get', 'https://public.api.bsky.app/xrpc/app.bsky.actor.getProfile?actor=' + profileHandleWithoutLeadingAtSymbol, true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
                 xhr.send();
+            }
+
+
+            function findValueOfKeyFromQueryStringInUrl(keyToFindValueOf) { // Gets the URL, looks at the query strings, and finds the corresponding the value for the key you want. If the key doesn't exist, it returns null.
+                const url = window.location.href; 
+                const searchParams = new URL(url).searchParams; 
+                const urlSearchParams = new URLSearchParams(searchParams);
+                const queryStringArray = Array.from(urlSearchParams.entries()); // Returns an array of arrays. Each array corresponds to one key/value pair, the key being [0] and value being [1].
+                // We need to find an array (inside this one) whose [0]	is the key we seek.
+                // Good thing I made a highly specific functon for that!
+                return findValueofNthItemInArrayOfMultiItemArraysAssumingYouKnowWhatAndWhereTheRthItemIs(keyToFindValueOf, 0, queryStringArray, 1);
+            }
+
+            function findValueofNthItemInArrayOfMultiItemArraysAssumingYouKnowWhatAndWhereTheRthItemIs(valueOfRthItem, indiceOfRthItem, arrayOfArraysToLookThrough, indiceOfNthItem) { // This finds the value of an item within an array of multi-item arrays assuming you already know what another item is. This seems oddly specific (because it is), but it has its uses; refer to the query string shenanigans.
+                var foundValue = null;
+                for (let i = 0; i < arrayOfArraysToLookThrough.length; i++) { // For every array in the top array,
+                    for (let j = 0; j <= arrayOfArraysToLookThrough[i].length; j++) { // see if the rth value is what you seek.
+                        if (arrayOfArraysToLookThrough[i][indiceOfRthItem] == valueOfRthItem) { // If it is, iterate to find nth item and, if found, set foundValue to it.
+                            foundValue = arrayOfArraysToLookThrough[i][indiceOfNthItem];
+                        };
+                    };
+                };
+                return foundValue;
+                // You know, the code for this used to make multiple arrays and sort through them. It sucked. This is faster. And with far less bugs.
+                // I'm glad I refactored this.
             }
 
         </script>
