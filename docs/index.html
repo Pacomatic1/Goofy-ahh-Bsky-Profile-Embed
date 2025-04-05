@@ -109,11 +109,11 @@
 
             <div id="bskyProfileEmbedText">
                 
-                <a href="" class="linkToProfile displayNameLink" target="_blank">
+                <a href="" class="linkToProfile displayNameLink">
                     <b id="displayNameText">Loading...</b>  <br>
                 </a>
 
-                <a href="" target="_blank" class="linkToProfile handleLink">
+                <a href="" class="linkToProfile handleLink">
                     <span id="handleDisplay">Loading...</span>
                 </a>
 
@@ -159,6 +159,7 @@
                 for(let i = 0; i < allElementsToSetLinkOn.length; i++) {
                     var elementToModify = allElementsToSetLinkOn[i];
                     elementToModify.href = profileLink;
+                    elementToModify.target = "_blank";
                 }
                 everythingContainer.addEventListener('click', function (event) {
                     open(profileLink);
