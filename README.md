@@ -11,7 +11,7 @@ Easy, right??
 # Where can I use this?
 If you can have cross-origin iframes with Javascript, you can have this!
 
-This is ideal for a static site, like Neocities, Nekoweb, or GitHub Pages. I mention this because that's *why* this exists; see [my site!](pacomatic1.github.io)
+This is ideal for a static site, like Neocities, Nekoweb, or GitHub Pages. I mention this because that's *why* this exists; see [my site!](https://pacomatic1.github.io)
 
 # Does this suck?
 
